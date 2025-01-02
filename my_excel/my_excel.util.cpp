@@ -2,144 +2,6 @@
 
 namespace MyExcel {
 
-    Vector::Vector(int n)
-        : data(new string[n]), capacity(n), length(0)
-    {}
-
-    void Vector::push_back(const string& s)
-    {
-        if (capacity <= length)
-        {
-            const auto temp = new string[capacity * 2];
-            for (int i = 0; i < length; i++)
-                temp[i] = data[i];
-
-            delete[] data;
-            data = temp;
-            capacity *= 2;
-        }
-
-        data[length] = s;
-        length++;
-    }
-
-    string Vector::operator[](int i) const
-    {
-        return data[i];
-    }
-
-    void Vector::remove(int n)
-    {
-        for (int i = n + 1; i < length; i++)
-            data[i -1] = data[i];
-
-        length--;
-    }
-
-    int Vector::size() const
-    {
-        return length;
-    }
-
-    Vector::~Vector()
-    {
-        delete[] data;
-    }
-
-    Stack::Stack() : start(nullptr, "")
-    {
-        current = &start;
-    }
-
-    void Stack::push(string s)
-    {
-        current = new Node(current, s);
-    }
-
-    string Stack::pop()
-    {
-        if (current == &start)
-            return "";
-
-        string s = current->s;
-        const auto prev = current;
-        current = current->prev;
-
-        delete prev;
-
-        return s;
-    }
-
-    string const Stack::peek()
-    {
-        return current->s;
-    }
-
-    bool Stack::is_empty()
-    {
-        if (current == &start)
-            return true;
-
-        return false;
-    }
-
-    Stack::~Stack()
-    {
-        while (current != &start)
-        {
-            auto prev = current;
-            current = current->prev;
-            delete prev;
-        }
-    }
-
-    NumStack::NumStack() : start(nullptr,0)
-    {
-        current = &start;
-    }
-
-    void NumStack::push(double s)
-    {
-        auto* n = new Node(current,s);
-        current = n;
-    }
-
-    double NumStack::pop()
-    {
-        if (current == &start) return 0;
-
-        const double s = current->s;
-        auto prev = current;
-        current = current->prev;
-
-        delete prev;
-
-        return s;
-    }
-
-    double NumStack::peek()
-    {
-        return current->s;
-    }
-
-    bool NumStack::is_empty()
-    {
-        if (current == &start)
-            return true;
-
-        return false;
-    }
-
-    NumStack::~NumStack()
-    {
-        while (current != &start)
-        {
-            const auto prev = current;
-            current = current->prev;
-            delete prev;
-        }
-    }
-
     Cell::Cell(string data, int x, int y, Table *table)
         : data(data), x(x), y(y), table(table) {}
 
@@ -154,7 +16,8 @@ namespace MyExcel {
     }
 
     Table::Table(int max_row_size, int max_col_size)
-        : max_col_size(max_col_size), max_row_size(max_row_size)
+        : max_col_size(max_col_size)
+        , max_row_size(max_row_size)
     {
         data_table = new Cell **[max_row_size];
 
@@ -192,10 +55,9 @@ namespace MyExcel {
         int row = atoi(s.c_str() + 1) -1;
 
         if (row < max_row_size && col < max_col_size)
-        {
             if (data_table[row][col])
                 return data_table[row][col] -> to_numeric();
-        }
+
         return 0;
     }
 
@@ -213,10 +75,9 @@ namespace MyExcel {
         int row = atoi(s.c_str() +1) -1;
 
         if (row < max_row_size && col < max_col_size)
-        {
             if (data_table[row][col])
                 return data_table[row][col] ->stringify();
-        }
+
         return "";
     }
 
@@ -236,7 +97,8 @@ namespace MyExcel {
     }
 
     TxtTable::TxtTable(int row, int col)
-        : Table(row,col) {}
+        : Table(row,col) 
+    {}
 
     string TxtTable::print_table()
     {
@@ -249,10 +111,9 @@ namespace MyExcel {
             unsigned int max_wide = 2;
 
             for (int j = 0; j < max_row_size; j++)
-            {
                 if (data_table[j][i] && data_table[j][i]->stringify().length() > max_wide)
                     max_wide = data_table[j][i]->stringify().length();
-            }
+
             col_max_wide[i] = max_wide;
         }
 
@@ -327,5 +188,4 @@ namespace MyExcel {
 
         return s;
     }
-
 }
