@@ -1,9 +1,11 @@
 #include "my_excel.util.h"
 
+#include <utility>
+
 namespace MyExcel {
 
     Cell::Cell(string data, int x, int y, Table *table)
-        : data(data), x(x), y(y), table(table) {}
+        : data(std::move(data)), x(x), y(y), table(table) {}
 
     string Cell::stringify()
     {

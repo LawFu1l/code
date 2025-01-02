@@ -16,7 +16,6 @@ int main()
     table.reg_cell(new MyExcel::Cell("c++",0 ,1, &table), 0, 1);
     table.reg_cell(new MyExcel::Cell("programming",1 ,1, &table), 1, 1);
 
-
     cout << endl << table;
     out << table;
 
