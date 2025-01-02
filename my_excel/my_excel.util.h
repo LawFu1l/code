@@ -5,6 +5,7 @@
 #pragma once
 
 #include <string>
+#include <ostream>
 
 using std::string;
 
@@ -17,57 +18,6 @@ namespace MyExcel {
         Node* prev;
         T s;
         Node(Node* pre, const T& s) : prev(pre), s{s} {}
-    };
-
-    class Vector
-    {
-    public:
-        explicit Vector(int n = 1);
-        ~Vector();
-
-        void push_back(const string& s);
-
-        string operator[](int i) const;
-
-        void remove(int n);
-
-        int size() const;
-    private:
-        string* data;
-        int capacity;
-        int length;
-    };
-
-    class Stack
-    {
-    public:
-        Stack();
-        ~Stack();
-
-        void push(string s);
-        string pop();
-        string const peek();
-        bool is_empty();
-
-    private:
-        Node<string>* current;
-        Node<string> start;
-    };
-
-    class NumStack
-    {
-    public:
-        NumStack();
-        ~NumStack();
-
-        void push(double s);
-        double pop();
-        double peek();
-        bool is_empty();
-
-    private:
-        Node<double>* current;
-        Node<double> start;
     };
 
     class Table
