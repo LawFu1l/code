@@ -51,12 +51,22 @@ namespace MyExcel {
         virtual ~Cell() = default;
 
         Cell(string data, int x, int y, Table* table);
-        virtual string stringify();
-        virtual int to_numeric();
+        virtual string stringify() = 0;
+        virtual int to_numeric() = 0;
 
     protected:
         int x, y;
         Table* table;
+    };
+
+    class StringCell : public Cell
+    {
+    public:
+        string stringify();
+        int to_numeric() ;
+
+        StringCell(string data, int x, int y, Table* t);
+    private:
         string data;
     };
 
