@@ -1,0 +1,4 @@
+# ninja log v6
+2	293	7575305194012524	CMakeFiles/my_excel.dir/main.cpp.obj	5d5b2bbfe1b1cf67
+5	336	7575305194042686	CMakeFiles/my_excel.dir/my_excel.util.cpp.obj	775e8e2f9bce89cc
+336	484	7575305197350908	my_excel.exe	ce746f67b3a52316
