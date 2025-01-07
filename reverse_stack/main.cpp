@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <utility>
 
 using namespace std;
 
@@ -11,6 +12,15 @@ struct Node
         next = nullptr;
     }
 
+    Node(const Node& rhs)
+    {
+        if (this != &rhs)
+        {
+            data = rhs.data;
+            next = rhs.next;
+        }
+    }
+
     string data;
     Node* next;
 };
@@ -19,6 +29,40 @@ class Stack
 {
 public:
     Stack() = default;
+
+    Stack(const Stack& rhs)
+    {
+        if (this == &rhs)
+            return;
+
+        auto oc  = rhs._top;
+        _top = nullptr;
+        auto nc = _top;
+
+        while (oc != nullptr)
+        {
+            auto n = new Node(oc->data);
+            if (_top == nullptr)
+                _top = n;
+            else
+               nc->next = n;
+
+            nc = n;
+            oc = oc->next;
+        }
+
+    }
+
+    Stack& operator=(const Stack& rhs)
+    {
+        if (this != &rhs)
+        {
+            Stack tmp(rhs);
+            std::swap<Node*>(_top, tmp._top);
+        }
+
+        return *this;
+    }
 
     ~Stack()
     {
@@ -77,31 +121,19 @@ public:
         cout << "end" << endl;
     }
 
-    Node* get_top()
-    {
-        return this->_top;
-    }
-
 private:
     Node* _top{nullptr};
 };
-
-string get_data(Node* &in)
-{
-    return in->data;
-}
 
 Stack reverse(Stack& in)
 {
     Stack reversed;
 
-    auto tmp_top = in.get_top();
-
-    while (tmp_top != nullptr)
+    while (!in.is_empty())
     {
-        auto tmp_data = get_data(tmp_top);
-        reversed.push(tmp_data);
-        tmp_top = tmp_top->next;
+        auto val = in.top();
+        reversed.push(val);
+        in.pop();
     }
 
     return reversed;
@@ -110,17 +142,13 @@ Stack reverse(Stack& in)
 int main()
 {
     Stack A;
-
-
-    for (int i = 0; i < 10; i++)
-    {
+    for (int i = 0; i < 23; i++)
         A.push(to_string(i));
-    }
 
     A.print_all();
 
-    Stack reversed_A = reverse(A);
-
+    Stack reversed_A;
+    reversed_A = reverse(A);
     reversed_A.print_all();
 
     return 0;
