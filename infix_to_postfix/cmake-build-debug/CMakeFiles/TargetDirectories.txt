@@ -1,3 +1,0 @@
-/Users/gunhee/CLionProjects/infix_to_postfix/cmake-build-debug/CMakeFiles/infix_to_postfix.dir
-/Users/gunhee/CLionProjects/infix_to_postfix/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/gunhee/CLionProjects/infix_to_postfix/cmake-build-debug/CMakeFiles/rebuild_cache.dir
