@@ -817,8 +817,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/USER/CLionProjects/reverse_stack/cmake-build-debug",
-		"source" : "C:/Users/USER/CLionProjects/reverse_stack"
+		"build" : "C:/Users/USER/CLionProjects/binary_tree/cmake-build-debug",
+		"source" : "C:/Users/USER/CLionProjects/binary_tree"
 	},
 	"version" : 
 	{

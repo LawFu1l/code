@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "reverse_stack.exe"
+			"path" : "binary_tree.exe"
 		},
 		{
-			"path" : "reverse_stack.pdb"
+			"path" : "binary_tree.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -56,7 +56,7 @@
 			]
 		}
 	],
-	"id" : "reverse_stack::@6890427a1f51a3e7e1df",
+	"id" : "binary_tree::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -76,8 +76,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "reverse_stack",
-	"nameOnDisk" : "reverse_stack.exe",
+	"name" : "binary_tree",
+	"nameOnDisk" : "binary_tree.exe",
 	"paths" : 
 	{
 		"build" : ".",

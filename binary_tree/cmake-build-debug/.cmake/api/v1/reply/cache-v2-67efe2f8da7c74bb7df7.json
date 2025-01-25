@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/USER/CLionProjects/reverse_stack/cmake-build-debug"
+			"value" : "c:/Users/USER/CLionProjects/binary_tree/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/USER/CLionProjects/reverse_stack/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/USER/CLionProjects/binary_tree/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/USER/CLionProjects/reverse_stack"
+			"value" : "C:/Users/USER/CLionProjects/binary_tree"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/reverse_stack"
+			"value" : "C:/Program Files (x86)/binary_tree"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "reverse_stack"
+			"value" : "binary_tree"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1282,7 +1282,7 @@
 			"value" : "TRUE"
 		},
 		{
-			"name" : "reverse_stack_BINARY_DIR",
+			"name" : "binary_tree_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1291,10 +1291,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/USER/CLionProjects/reverse_stack/cmake-build-debug"
+			"value" : "C:/Users/USER/CLionProjects/binary_tree/cmake-build-debug"
 		},
 		{
-			"name" : "reverse_stack_IS_TOP_LEVEL",
+			"name" : "binary_tree_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1306,7 +1306,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "reverse_stack_SOURCE_DIR",
+			"name" : "binary_tree_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1315,7 +1315,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/USER/CLionProjects/reverse_stack"
+			"value" : "C:/Users/USER/CLionProjects/binary_tree"
 		}
 	],
 	"kind" : "cache",
