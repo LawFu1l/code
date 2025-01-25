@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.30"
@@ -27,7 +27,11 @@
 					[
 						0
 					],
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-9e67b965bc533a71df8d.json
 					"name" : "binary_tree",
+========
+					"name" : "fibonacci_tmp",
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:math/fibonacci_tmp/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-c20ec351cf1685a65ba3.json
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +42,15 @@
 			[
 				{
 					"directoryIndex" : 0,
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-9e67b965bc533a71df8d.json
 					"id" : "binary_tree::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-binary_tree-Debug-f763483d279dc336295b.json",
 					"name" : "binary_tree",
+========
+					"id" : "fibonacci_tmp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fibonacci_tmp-Debug-55ec58313217e93bab5c.json",
+					"name" : "fibonacci_tmp",
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:math/fibonacci_tmp/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-c20ec351cf1685a65ba3.json
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +59,13 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-9e67b965bc533a71df8d.json
 		"build" : "C:/Users/USER/CLionProjects/binary_tree/cmake-build-debug",
 		"source" : "C:/Users/USER/CLionProjects/binary_tree"
+========
+		"build" : "/Users/gunhee/CLionProjects/fibonacci_tmp/cmake-build-debug",
+		"source" : "/Users/gunhee/CLionProjects/fibonacci_tmp"
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:math/fibonacci_tmp/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-c20ec351cf1685a65ba3.json
 	},
 	"version" : 
 	{

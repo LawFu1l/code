@@ -1,8 +1,16 @@
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/cmake_install.cmake
 # Install script for directory: C:/Users/USER/CLionProjects/binary_tree
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
   set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/binary_tree")
+========
+# Install script for directory: /Users/gunhee/CLionProjects/fibonacci_tmp
+
+# Set the install prefix
+if(NOT DEFINED CMAKE_INSTALL_PREFIX)
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:math/fibonacci_tmp/cmake-build-debug/cmake_install.cmake
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,7 +42,7 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2024.2.2/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -52,6 +60,10 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/cmake_install.cmake
   file(WRITE "C:/Users/USER/CLionProjects/binary_tree/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+========
+  file(WRITE "/Users/gunhee/CLionProjects/fibonacci_tmp/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:math/fibonacci_tmp/cmake-build-debug/cmake_install.cmake
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
