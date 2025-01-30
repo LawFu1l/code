@@ -6,23 +6,25 @@
 
 using namespace std;
 
-struct Node
-{
-    Node(const int& no)
-        : _no(no)
+namespace {
+    struct Node
     {
-        left = right = nullptr;
-    }
+        Node(const int& no)
+            : _no(no)
+        {
+            left = right = nullptr;
+        }
 
-    int _no;
-    Node* left;
-    Node* right;
-};
+        int _no;
+        Node* left;
+        Node* right;
+    };
+}
 
-class Binary_tree
+class BinaryTree
 {
 public:
-    Binary_tree(Node* in)
+    BinaryTree(Node* in)
     {
         _root = in;
     }
@@ -86,23 +88,13 @@ int main()
     two->left = new Node(5);    // 5
     two->right = new Node(6);   // 6
 
-    Binary_tree bt(n);
+    BinaryTree bt(n);
 
     int sum = 0;
     auto summer = [&sum](const auto node) { sum += node->_no; };
-    
     bt.visit(summer, 0);
 
     cout << sum << endl;
-
-    // 1. lambda
-    // 2. tree traversal
-    // 3. template programming
-
-    vector<int> v = { 10, 1, 2, 3, 4, 5 };
-    list<int> l = { 10, 1, 2, 3, 4, 5 };
-
-    sort(l.begin(), l.end(), [](const int& a, const int& b) { return a < b; });
 
     return 0;
 }
