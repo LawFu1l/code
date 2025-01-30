@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/USER/code/bst/cmake-build-debug",
+  "command": "g++ -I/usr/local/include -I/opt/homebrew/include -IC:/Users/USER/code/bst -g -std=gnu++23 -fdiagnostics-color=always -o CMakeFiles\\bst.dir\\bst.cpp.obj -c C:\\Users\\USER\\code\\bst\\bst.cpp",
+  "file": "C:\\Users\\USER\\code\\bst\\bst.cpp",
+  "output": "CMakeFiles\\bst.dir\\bst.cpp.obj"
+}
+]

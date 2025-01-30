@@ -28,27 +28,34 @@ struct Node
 class BST
 {
 public:
-    BST(int root)
-    {
-        _root = new Node(root);
-    }
-
-    // push, pop등 트리 구조에 변화를 주는 함수의 호출마다
-    // private 멤버 데이터를 갱신 할 수 있도록 한다.
-    // void status(const Node* in)
-    // {
-    //     if (t_level < in->level) 
-    //         t_level = in->level;
-    // }
-    void visit(const Node* in)
-    {
-        if (in != nullptr)
-            cout << in->_val << endl;
-    }
+    BST() : _root{nullptr}
+    {}
 
     void preorder_traverse()
     {
         preorder(_root);
+    }
+
+    void insert(int val)
+    {
+        _root = insert(_root, val);
+    }
+
+    bool search(int val)
+    {
+        return search(_root, val);
+    }
+
+    auto find_min_node(Node* node) ->Node*
+    {
+        while (node->left_ok()) node = node->left;
+
+        return node;
+    }
+
+    void remove(int val)
+    {
+        _root = remove(_root, val);
     }
 
     void add(int val)
@@ -83,18 +90,83 @@ public:
         }
     }
 
-    void add_range(vector<int> arr)
+    void preorder()
+    {
+        preorder(_root);
+        cout << endl;
+    }
+
+    void insert_range(vector<int> arr)
     {
         for (int i : arr)
-            add(i);
+            insert(i);
     }
 
 private:
+
+    auto insert(Node* node, int val) -> Node*
+    {
+        if (node == nullptr) return new Node(val);
+        if (val < node->_val)
+            node->left = insert(node->left, val);
+        else
+            node->right = insert(node->right, val);
+
+        return node;
+
+    }
+
+    auto remove(Node* node, int val) -> Node*
+    {
+        if (node == nullptr) return nullptr;
+        if (val < node->_val)
+            node->left = remove(node->left, val);
+        else if (val > node->_val)
+            node->right = remove(node->right, val);
+        else
+        {
+            if (!node->left_ok() && !node->right_ok())
+            {
+                delete node;
+                return nullptr;
+            }
+
+            if (!node->left_ok())
+            {
+                auto tmp = node->right;
+                delete node;
+                return tmp;
+            }
+
+            if (!node->right_ok())
+            {
+                auto tmp = node->left;
+                delete node;
+                return tmp;
+            }
+
+            auto temp = find_min_node(node->right);
+            node->_val = temp->_val;
+            node->right = remove(node->right, temp->_val);
+        }
+    }
+
+    auto search(Node* node, int val) -> bool
+    {
+        if (node == nullptr) return false;
+
+        if (node->_val == val) return true;
+
+        return node->_val < val
+            ? search(node->right, val)
+            : search(node->left, val);
+    }
+
     void preorder(const Node* in)
     {
         if (in != nullptr)
         {
-            visit(in);
+            cout << in->_val << " ";
             preorder(in->left);
             preorder(in->right);
         }
@@ -115,9 +187,10 @@ int main()
      *
      */
 
-    vector<int> values{1, 3, 2, 4, 6, 7, 8, 9};
-    BST tree(5);
-    tree.add_range(values);
+    BST tree;
+    vector<int> values{8,3,10,1,6,4,7,14,13};
+
+    tree.insert_range(values);
     tree.preorder_traverse();
 
     return 0;
