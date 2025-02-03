@@ -121,10 +121,7 @@ public:
         }
     }
 
-
-// private function
 private:
-
     void viewmode_util(string& mode)
     {
         cout << "---------------------------------" << endl;
