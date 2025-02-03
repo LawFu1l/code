@@ -1,0 +1,115 @@
+{
+	"artifacts" : 
+	[
+		{
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/.cmake/api/v1/reply/target-binary_tree-Debug-f763483d279dc336295b.json
+			"path" : "binary_tree.exe"
+		},
+		{
+			"path" : "binary_tree.pdb"
+========
+			"path" : "infix_to_postfix_ver2_"
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:infix_to_postfix(ver2)/cmake-build-debug/.cmake/api/v1/reply/target-infix_to_postfix_ver2_-Debug-a92699ebac4e08a17498.json
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "23"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/.cmake/api/v1/reply/target-binary_tree-Debug-f763483d279dc336295b.json
+	"id" : "binary_tree::@6890427a1f51a3e7e1df",
+========
+	"id" : "infix_to_postfix_ver2_::@6890427a1f51a3e7e1df",
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:infix_to_postfix(ver2)/cmake-build-debug/.cmake/api/v1/reply/target-infix_to_postfix_ver2_-Debug-a92699ebac4e08a17498.json
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			}
+		],
+		"language" : "CXX"
+	},
+<<<<<<<< HEAD:binary_tree/cmake-build-debug/.cmake/api/v1/reply/target-binary_tree-Debug-f763483d279dc336295b.json
+	"name" : "binary_tree",
+	"nameOnDisk" : "binary_tree.exe",
+========
+	"name" : "infix_to_postfix_ver2_",
+	"nameOnDisk" : "infix_to_postfix_ver2_",
+>>>>>>>> 4b91dcb30ee9ee51ac713223539a750300695006:infix_to_postfix(ver2)/cmake-build-debug/.cmake/api/v1/reply/target-infix_to_postfix_ver2_-Debug-a92699ebac4e08a17498.json
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
