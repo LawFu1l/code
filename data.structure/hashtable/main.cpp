@@ -6,7 +6,6 @@ using namespace std;
 
 /*
  *  올려야하는 식별자의 수, 버킷에 올라간 식별자의 수, 총 버킷의 수, 입력 데이터 타입, 식별자 밀집도
- *
  */
 
 struct Node
@@ -32,22 +31,44 @@ public:
         _bucket.resize(_bucket_size);
     }
 
+    ~Hashtable()
+    {
+    }
+
     void insert(vector<string>& input)
     {
         for (auto& s : input)
             insert(s);
     }
 
+    void remove2(const string& name)
+    {
+        int position = djb2(name);
+        auto to_remove = _bucket[position];
+        while (to_remove->_next != nullptr)
+        {
+            if (to_remove->_name == name)
+            {
+                auto tmp = to_remove->_next;
+                delete to_remove;
+                _bucket[position] = tmp;
+                return;
+            }
+
+            to_remove = to_remove->_next;
+        }
+    }
+
     void remove(const string& name)
     {
         int position = djb2(name);
-        auto unremoved = _bucket[position];
-        auto tmp = new Node();
+        auto to_remove = _bucket[position];
 
-        if (unremoved->_name == name)
+        // TODO 이 if가 왜 필요하지?
+        if (to_remove->_name == name)
         {
-            tmp = unremoved->_next;
-            delete unremoved;
+            auto tmp = to_remove->_next;
+            delete to_remove;
             _bucket[position] = tmp;
         }
         else
@@ -57,7 +78,11 @@ public:
             {
                 tmp = tmp->_next;
             }
-            if (tmp->_next == nullptr) delete tmp;
+
+            if (tmp->_next == nullptr)
+            {
+                delete tmp;
+            }
             else
             {
                 auto cur = tmp;
@@ -96,13 +121,7 @@ public:
         }
     }
 
-    ~Hashtable()
-    {
-
-    }
-// private function
 private:
-
     void viewmode_util(string& mode)
     {
         cout << "---------------------------------" << endl;
@@ -114,13 +133,16 @@ private:
         view_metadata();
         view_table();
     }
-    
+
     void view_table()
     {
 
         for (int i = 0; i < _bucket_size; i++)
         {
-            if (_bucket[i] == nullptr) cout << "empty";
+            if (_bucket[i] == nullptr) 
+            {
+                cout << "empty";
+            }
             else
             {
                 cout << _bucket[i]->_name << " ";
@@ -135,6 +157,7 @@ private:
             cout << endl;
         }
     }
+
     void view_metadata()
     {
         cout << "---------------------------------" << endl;
@@ -144,20 +167,18 @@ private:
     {
         int position = djb2(name);
         auto tmp = new Node(name);
-        // 버킷이 비어있는 경우
-        if (_bucket[position] == nullptr)
+
+        if (_bucket[position] == nullptr) // 버킷이 비어있는 경우
         {
             _bucket[position] = tmp;
         }
-        else
+        else //버킷이 이미 노드를 가진 경우
         {
-            //버킷이 이미 노드를 가진 경우
-            auto n = _bucket[position];
-            while (n->_next != nullptr)
-            {
-                n = n->_next;
-            }
-            n->_next = tmp;
+            auto cur = _bucket[position];
+            while (cur->_next != nullptr)
+                cur = cur->_next;
+
+            cur->_next = tmp;
         }
     }
 
@@ -165,10 +186,10 @@ private:
     unsigned int djb2(const string key)
     {
         unsigned long hash = 5381;
-        for (char c : key) {
+        for (char c : key)
             hash = ((hash << 5) + hash) + c;  // hash * 33 + c
-        }
-        return hash % this->_bucket_size;
+
+        return hash % _bucket_size;
     }
 
 private:
@@ -182,7 +203,7 @@ int main()
     vector<string> month{"jan", "feb", "mar", "apr", "may", "jun","jul", "aug", "sep", "oct", "nov", "dec"};
     table.insert(month);
     table.view_status(Option::Table);
-    table.remove("jan");
+    table.remove2("jan");
 
     return 0;
 }
