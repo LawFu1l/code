@@ -27,16 +27,13 @@ enum class Type
 
 struct Entry
 {
-    Entry()
-    {
-
-    }
+    Entry() {}
 };
 
-class Polynomial_f
+class Polynomial
 {
 public:
-    explicit Polynomial_f(vector<double>& equation)
+    explicit Polynomial(vector<double>& equation)
         : m_terms{equation}
     {
         m_degree = m_terms.size();
@@ -49,9 +46,8 @@ public:
     {
         double val = 0;
         for (int i = 0; i < m_degree; i++)
-        {
             val += pow(__x,i) * m_terms[i];
-        }
+
         return val;
     }
 
@@ -78,11 +74,12 @@ public:
     {
         double delta = (to-from) / delta_size;
         double area = 0;
-        while (from != to)
+        while (from <= to)
         {
             area += delta * (y_value(from) + y_value(from + delta)) / 2;
             from += delta;
         }
+
         return area;
     }
 
@@ -120,9 +117,10 @@ int main()
     // 1+2x + 3x^2
     vector<double> xs = {1,2,3};
     int x_val = 3;
-    Polynomial_f function(xs);
+    Polynomial function(xs);
     int y = function.y_value(x_val);
-    int area = function.integral(1,2,5);
+    // 적분 결과는
+    double area = function.integral(1,2,100000);
     cout << "area : " << area << endl;
     for (auto& i : function.differed_terms)
     {
@@ -132,6 +130,7 @@ int main()
         }
         cout << "\n";
     }
+    cout << "executed successfully" << endl;
 
     cout << "function val : " << y ;
 
