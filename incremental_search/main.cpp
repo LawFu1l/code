@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <numeric>
+#include <cassert>
 
 using namespace std;
 
@@ -25,11 +27,6 @@ enum class Type
     Trigonometric
 };
 
-struct Entry
-{
-    Entry() {}
-};
-
 class Polynomial
 {
 public:
@@ -37,76 +34,63 @@ public:
         : m_terms{equation}
     {
         m_degree = m_terms.size();
-        vector<double> derivated = diff(equation);
+        vector<double> derivated = diff(equation);  
         vector<double> twice_derivated = diff(derivated);
-    }
-
-    //
-    auto y_value(double __x)->int
-    {
-        double val = 0;
-        for (int i = 0; i < m_degree; i++)
-            val += pow(__x,i) * m_terms[i];
-
-        return val;
     }
 
     // 3 2 1
     // 미분한는 함수
-    auto diff(vector<double>& input) ->vector<double>
+    auto diff(vector<double>& input) -> vector<double>
     {
         vector<double> res;
-        int size = input.size();
-        for (int i = 1; i < size; i++)
+
+        for (int i = 1; i < input.size(); i++)
         {
             double diffed = i * input[i];
 
             res.push_back(diffed);
         }
-        differed_terms.push_back(res);
+
+        m_differed_terms.push_back(res);
 
         return res;
+    }
+
+    auto operator()(double x) -> double
+    {
+        double val = 0;
+        for (int i = 0; i < m_degree; i++)
+            val += pow(x, i) * m_terms[i];
+
+        return val;
     }
 
     // delta 값은 (to - from) / delta_size
     // 구분구적법 형식의 적분
     double integral(double from, double to, int delta_size)
     {
-        double delta = (to-from) / delta_size;
+        double delta = (to - from) / delta_size;
         double area = 0;
         while (from <= to)
         {
-            area += delta * (y_value(from) + y_value(from + delta)) / 2;
+            area += delta * ((*this)(from) + (*this)(from + delta)) / 2.0;
             from += delta;
         }
 
         return area;
     }
 
+    auto& differed_terms() const { return m_differed_terms;  }
+
     // 변곡점 존재여부 확인
-    auto check_inflection(){ return differed_terms[1].size() > 2;}
+    auto has_inflection_point() const { return m_differed_terms[1].size() > 2; }
 
     // 극값의 존재여부 확인
-    auto check_local_extreme(){ return differed_terms[0].size() > 2;}
+    auto has_local_extreme_point() const { return m_differed_terms[0].size() > 2; }
 
-    //변곡점 x위치 확인
-    auto position_inflection()
-    {
-        double res;
-
-        return res;
-    }
-
-    // 극값 관찰, 극값을 가지는 x 반환
-    auto position_local_extreme()
-    {
-        double res;
-
-        return res;
-    }
-
+private:
     vector<double> m_terms;
-    vector<vector<double>> differed_terms;
+    vector<vector<double>> m_differed_terms;
     int m_degree;
     int differed = 0;
 };
@@ -114,25 +98,25 @@ public:
 int main()
 {
     // 오름차순으로 입력을 받아보자.
-    // 1+2x + 3x^2
-    vector<double> xs = {1,2,3};
-    int x_val = 3;
-    Polynomial function(xs);
-    int y = function.y_value(x_val);
-    // 적분 결과는
-    double area = function.integral(1,2,100000);
+    // 1 + 2x + 3x^2
+    vector coeff = {1., 2., 3.};
+    Polynomial function(coeff);
+
+    assert(function(3) == 34);
+
+    // 적분 결과
+    auto area = function.integral(1, 2, 100000);
     cout << "area : " << area << endl;
-    for (auto& i : function.differed_terms)
+
+    for (auto& i : function.differed_terms())
     {
         for (auto& e : i)
-        {
             cout << " " << e << " ";
-        }
+        
         cout << "\n";
     }
-    cout << "executed successfully" << endl;
 
-    cout << "function val : " << y ;
+    cout << "executed successfully" << endl;
 
     return 0;
 }
