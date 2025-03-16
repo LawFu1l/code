@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # fib (n) 은 배열의 n번째 인덱스를 반환한다.배열의 크기는 n + 1
 
 def fib(n):

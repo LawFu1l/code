@@ -1,3 +1,0 @@
-/Users/gunhee/CLionProjects/incremental_search/cmake-build-debug/CMakeFiles/incremental_search.dir
-/Users/gunhee/CLionProjects/incremental_search/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/gunhee/CLionProjects/incremental_search/cmake-build-debug/CMakeFiles/rebuild_cache.dir
