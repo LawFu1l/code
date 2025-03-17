@@ -39,7 +39,8 @@ public:
     }
 
     // 3 2 1
-    // 미분한는 함수
+    // 미분하는 함수
+    // 다항함수 한정
     auto diff(vector<double>& input) -> vector<double>
     {
         vector<double> res;
@@ -78,6 +79,17 @@ public:
         }
 
         return area;
+    }
+
+
+    auto incremental_search(double x) ->double
+    {
+        double result;
+        double delta = 0.00001;
+
+
+
+        return result;
     }
 
     auto& differed_terms() const { return m_differed_terms;  }
