@@ -17,11 +17,15 @@ using namespace std;
  * 3. 필요하다면, 배열에 들어가는 값도 구조체로 선언해보자
  * 사용의 예시
  * [3,5,2] -> 3x^2 + 5x + 2
+ *
+ * 3월 17일 해야 할 것 : y_value 함수 재구성, incremental_search 함수 완성하기
  */
 
 enum class Type
 {
     Polynomial,
+    Polynomial_diffed_once,
+    Polynomial_diffed_twice,
     Exponential,
     Logarithmic,
     Trigonometric
@@ -57,6 +61,22 @@ public:
         return res;
     }
 
+    auto y_value(enum Type::type, double x)
+    {
+        switch (Type::type)
+        {
+            case (Polynomial_diffed_once)
+            {
+
+            }
+            case (Polynomial_diffed_twice)
+            {
+            }
+
+        }
+
+    }
+
     auto operator()(double x) -> double
     {
         double val = 0;
@@ -81,12 +101,12 @@ public:
         return area;
     }
 
-
+    // y_value 함수 다시 구성 후 완성할 것
     auto incremental_search(double x) ->double
     {
         double result;
         double delta = 0.00001;
-
+        
 
 
         return result;
