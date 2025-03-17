@@ -61,16 +61,17 @@ public:
         return res;
     }
 
-    auto y_value(enum Type::type, double x)
+    auto y_value(enum Type type, double x)
     {
-        switch (Type::type)
+        switch (type)
         {
-            case (Polynomial_diffed_once)
+            case Type::Polynomial_diffed_once:
             {
-
+                break;
             }
-            case (Polynomial_diffed_twice)
+            case Type::Polynomial_diffed_twice:
             {
+                break;
             }
 
         }
