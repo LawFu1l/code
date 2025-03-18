@@ -3,6 +3,7 @@
 #include <cmath>
 #include <numeric>
 #include <cassert>
+#include <stdnoreturn.h>
 
 using namespace std;
 
@@ -38,8 +39,6 @@ public:
         : m_terms{equation}
     {
         m_degree = m_terms.size();
-        vector<double> derivated = diff(equation);  
-        vector<double> twice_derivated = diff(derivated);
     }
 
     // 3 2 1
@@ -56,28 +55,44 @@ public:
             res.push_back(diffed);
         }
 
-        m_differed_terms.push_back(res);
+        m_terms.push_back(res);
 
         return res;
     }
 
+    auto y_value(double x, vector<double>& input)
+    {
+        double result = 0;
+        for (int i = 0; i < input.size(); i++)
+        {
+            result += input[i] * pow(x, i);
+        }
+        return result;
+    }
+
     auto y_value(enum Type type, double x)
     {
+        double result = 0;
         switch (type)
         {
             case Type::Polynomial_diffed_once:
             {
-                break;
+                result =  y_value(x,m_terms[1]);
             }
             case Type::Polynomial_diffed_twice:
             {
-                break;
+                result =  y_value(x,m_terms[2]);
             }
-
+            case Type::Polynomial:
+            {
+                result =  y_value(x,m_terms[0]);
+            }
+            default:
+                break;
         }
-
+        return result;
     }
-
+/*
     auto operator()(double x) -> double
     {
         double val = 0;
@@ -86,16 +101,16 @@ public:
 
         return val;
     }
-
+*/
     // delta 값은 (to - from) / delta_size
     // 구분구적법 형식의 적분
-    double integral(double from, double to, int delta_size)
+    double integral(double from, double to, int delta_size, Type type = Type::Polynomial)
     {
         double delta = (to - from) / delta_size;
         double area = 0;
         while (from <= to)
         {
-            area += delta * ((*this)(from) + (*this)(from + delta)) / 2.0;
+            area += ((y_value(type,from) + y_value(type,from+delta)) * delta) / 2;
             from += delta;
         }
 
@@ -103,6 +118,7 @@ public:
     }
 
     // y_value 함수 다시 구성 후 완성할 것
+    // 수치해석 근 탐색 방법 중 하나를 정한 후, 함수 이름에 반영하여 알고리즘을 표현
     auto incremental_search(double x) ->double
     {
         double result;
@@ -112,20 +128,18 @@ public:
 
         return result;
     }
-
-    auto& differed_terms() const { return m_differed_terms;  }
+    // 일계도함수 반환
+    auto& differed_terms() const { return m_terms[1];}
 
     // 변곡점 존재여부 확인
-    auto has_inflection_point() const { return m_differed_terms[1].size() > 2; }
+    auto has_inflection_point() const { return m_terms[2].size() > 2;}
 
     // 극값의 존재여부 확인
-    auto has_local_extreme_point() const { return m_differed_terms[0].size() > 2; }
+    auto has_local_extreme_point() const { return m_terms[1].size() > 2;}
 
 private:
-    vector<double> m_terms;
-    vector<vector<double>> m_differed_terms;
+    vector<vector<double>> m_terms;
     int m_degree;
-    int differed = 0;
 };
 
 int main()
@@ -135,19 +149,9 @@ int main()
     vector coeff = {1., 2., 3.};
     Polynomial function(coeff);
 
-    assert(function(3) == 34);
-
     // 적분 결과
     auto area = function.integral(1, 2, 100000);
     cout << "area : " << area << endl;
-
-    for (auto& i : function.differed_terms())
-    {
-        for (auto& e : i)
-            cout << " " << e << " ";
-        
-        cout << "\n";
-    }
 
     cout << "executed successfully" << endl;
 

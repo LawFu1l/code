@@ -1,3 +1,0 @@
-C:/Users/USER/code/data.structure/queue.list/cmake-build-debug/CMakeFiles/list_queue.dir
-C:/Users/USER/code/data.structure/queue.list/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/USER/code/data.structure/queue.list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
