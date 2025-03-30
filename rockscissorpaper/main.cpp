@@ -7,11 +7,14 @@ int count_winners(int rocks, int scissors, int papers)
     int winners = 0;
     // 모두 같은 것을 내는 경우
     if ((rocks == 0 && scissors == 0 && papers != 0) ||
-    (rocks != 0 && scissors == 0 && papers == 0) ||
-    (rocks == 0 && scissors != 0 && papers == 0))
+        (rocks != 0 && scissors == 0 && papers == 0) ||
+        (rocks == 0 && scissors != 0 && papers == 0))
         return 0;
+
     // 가위바위보가 다 나온경우
-    if (rocks != 0 && scissors != 0 && papers != 0) return 0;
+    if (rocks != 0 && scissors != 0 && papers != 0) 
+        return 0;
+
     // 승부가 나온경우
     if (rocks == 0) winners = scissors;
     if (papers == 0) winners = rocks;
@@ -20,11 +23,9 @@ int count_winners(int rocks, int scissors, int papers)
     return winners;
 }
 
-int match()
+int match(int players)
 {
-    int players;
     int rock = 0, scissor = 0, paper = 0;
-    cin >> players;
     for (int i = 0; i < players; i++)
     {
         // 가위바위보 각각 1,2,3
@@ -33,22 +34,15 @@ int match()
 
         switch (player_choice)
         {
-            case 1:
-                scissor++;
-                break;
-            case 2:
-                rock++;
-                break;
-            case 3:
-                paper++;
-                break;
+            case 1: scissor++; break;
+            case 2: rock++;    break;
+            case 3: paper++;   break;
             default:
                 break;
         }
     }
-    int winners = count_winners(rock,scissor,paper);
 
-    return winners;
+    return count_winners(rock,scissor,paper);
 }
 
 int main()
@@ -58,7 +52,9 @@ int main()
 
     for (int i = 0; i < testcase; i++)
     {
-        int winners = match();
+        int players; 
+        cin >> players;
+        int winners = match(players);
         cout << winners << endl;
     }
 

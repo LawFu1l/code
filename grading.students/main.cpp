@@ -15,7 +15,7 @@ char grade(int score)
 vector<int> grading(vector<int>& scores)
 {
     //0번째 인덱스부터 4번째 인덱스까지 각각 ABCDF
-    vector<int> graded{0,0,0,0,0};
+    vector<int> graded{0, 0, 0, 0, 0};
     int size = scores.size();
     for (int i = 0; i < size; i++)
     {
@@ -39,10 +39,11 @@ vector<int> grading(vector<int>& scores)
                 break;
         }
     }
+
     return graded;
 }
 
-vector<int> getscore()
+vector<int> get_scores()
 {
     vector<int> scores;
     int student_num;
@@ -53,6 +54,7 @@ vector<int> getscore()
         cin >> score;
         scores.push_back(score);
     }
+
     return scores;
 }
 
@@ -62,11 +64,13 @@ int main()
     cin >> testcase;
     for (int i = 0; i < testcase; i++)
     {
-        vector<int> scores = getscore();
+        vector<int> scores = get_scores();
         vector<int> graded = grading(scores);
         for (auto& e : graded)
             cout << e << " ";
+
         cout << endl;
     }
+
     return 0;
 }

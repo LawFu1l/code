@@ -2,13 +2,17 @@
 #include <vector>
 
 using namespace std;
-auto init(int size)->vector<vector<char>>
+
+using coordinate = vector<vector<char>>;
+
+auto init(int size) -> coordinate
 {
-    vector<vector<char>> result(size, vector<char>(size, '.'));
+    coordinate result(size, vector<char>(size, '.'));
+
     return result;
 }
 
-auto draw(vector<vector<char>>& input) ->vector<vector<char>>
+auto draw(coordinate& input) -> coordinate
 {
     int size = input.size();
     for (int i = 0; i < size; i++)
@@ -19,9 +23,9 @@ auto draw(vector<vector<char>>& input) ->vector<vector<char>>
             if (i == size / 2) input[i][j] = '+';
             if (j == size-i-1) input[i][j] = '*';
             if (j == size / 2 && i == size / 2) input[i][j] = 'O';
-
         }
     }
+
     return input;
 }
 
@@ -30,10 +34,7 @@ void print_graph(auto& graph)
     int size = graph.size();
     for (int i = 0; i < size; i++)
     {
-        for (int j = 0; j < size; j++)
-        {
-            cout << graph[i][j];
-        }
+        for (int j = 0; j < size; j++) cout << graph[i][j];
         cout << endl;
     }
 }
@@ -42,6 +43,7 @@ int main()
 {
     int testcase;
     cin >> testcase;
+
     for (int i = 0; i < testcase; i++)
     {
         int size;
@@ -50,5 +52,6 @@ int main()
         auto graph = draw(init_graph);
         print_graph(graph);
     }
+
     return 0;
 }
