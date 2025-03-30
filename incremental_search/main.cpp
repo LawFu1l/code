@@ -41,7 +41,7 @@ struct Terms
     }
     int m_degree;
     double m_coeff;
-}
+};
 
 class Polynomial
 {
