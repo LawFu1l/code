@@ -1,0 +1,3 @@
+/Users/gunhee/CLionProjects/fat32/Debug/CMakeFiles/fat32.dir
+/Users/gunhee/CLionProjects/fat32/Debug/CMakeFiles/edit_cache.dir
+/Users/gunhee/CLionProjects/fat32/Debug/CMakeFiles/rebuild_cache.dir
